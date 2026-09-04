@@ -1139,7 +1139,7 @@ def perfil():
             if nueva_clave: admin_data["clave"] = nueva_clave
             mensaje = "¡Contraseña de Administrador actualizada!"
         else:
-           anio = request.form.get('anio_nacimiento')
+            anio = request.form.get('anio_nacimiento')
             if not anio or anio.strip() =='':
                 anio = None
             carrera = request.form.get('carrera') if rol == 'alumno' else ""
