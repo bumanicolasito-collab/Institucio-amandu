@@ -1142,10 +1142,13 @@ def perfil():
             anio = request.form.get('anio_nacimiento')
             carrera = request.form.get('carrera') if rol == 'alumno' else ""
             foto_file = request.files.get('foto')
-            
             foto_b64 = usuario_datos[1]
             if foto_file and foto_file.filename != '':
-                foto_b64 = base64.b64encode(foto_file.read()).decode('utf-8')
+                try:
+                    foto_bytes = foto_file.read()
+                    foto_b64 = base64.b64encode(foto_bytes).decode('utf-8')
+                except Exception as ex:
+                    print(f"Error procesando imagen: {ex}")
             
             if rol == 'alumno':
                 if nueva_clave:
