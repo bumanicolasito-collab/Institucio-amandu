@@ -1140,7 +1140,7 @@ def perfil():
             mensaje = "¡Contraseña de Administrador actualizada!"
         else:
            anio = request.form.get('anio_nacimiento')
-            if not anio:
+            if not anio or anio.strip() =='':
                 anio = None
             carrera = request.form.get('carrera') if rol == 'alumno' else ""
             foto_file = request.files.get('foto')
